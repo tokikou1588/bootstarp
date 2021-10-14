@@ -1,0 +1,55 @@
+﻿@*<div>
+    <!--Single Line-->
+    @{ var name = "Slark";}
+    @{ Response.Write("Single Line : Name is" + name + "<br />");}
+
+    <!--Inline-->
+    Inline : Today is:@DateTime.Now.ToString("yyyy-MM-dd") <br />
+    Inline : Name is @name <br />
+
+    <!--Multi-Line-->
+    @{
+        var age = 25;
+        Response.Write("Multi-Line : Age is " + age + "<br />");
+    }
+</div>*@
+
+@*@if (1 > 2)
+{
+    Response.Write("1 > 2 <br />");
+}
+else
+{
+    Response.Write("1 <= 2 <br />");
+}
+
+@for (int i = 0; i < 3; i++)
+{
+    Response.Write(i + " <br />");
+}*@
+
+@*<p>P before</p>
+
+@for (int i = 0; i < 2; i++)
+{
+    Response.Write("<p>P Write " + i + "</p>");
+    <p>P @i</p>
+}
+
+<p>P after</p>*@
+
+@{
+    var name1 = "Slark";
+    <p>var name2 = "Slark";</p>
+    @:var name3 = "Slark";<br />
+    <text>
+            var name4 = "Slark";<br />
+            var name5 = "Slark";
+    </text>
+}
+
+
+
+
+
+
