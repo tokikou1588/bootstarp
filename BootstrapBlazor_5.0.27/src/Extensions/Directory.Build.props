@@ -1,0 +1,23 @@
+<Project>
+
+  <Import Project="..\Directory.Build.props" />
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageIcon>logo.png</PackageIcon>
+    <Version>5.0.17</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="logo.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BootstrapBlazor\BootstrapBlazor.csproj" />
+  </ItemGroup>
+
+</Project>

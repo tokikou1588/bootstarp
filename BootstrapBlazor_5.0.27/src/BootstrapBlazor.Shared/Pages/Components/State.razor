@@ -1,0 +1,18 @@
+﻿@if (Count > 0)
+{
+    <Badge Color="@BootstrapBlazor.Components.Color.Info" IsPill="true">
+        @Count
+    </Badge>
+}
+@if (IsNew)
+{
+    <span class="badge badge-danger">
+        <span>NEW</span>
+    </span>
+}
+@if (IsUpdate)
+{
+    <span class="badge badge-success">
+        <span>Upd</span>
+    </span>
+}

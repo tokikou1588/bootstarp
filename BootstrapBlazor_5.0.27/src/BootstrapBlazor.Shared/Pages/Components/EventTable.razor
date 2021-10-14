@@ -1,0 +1,15 @@
+﻿<div class="table-attr">
+    <h4>事件 Events</h4>
+
+    <Table TItem="BootstrapBlazor.Shared.Common.EventItem" Items="Items">
+        <TableColumns>
+            <TableColumn @bind-Field="@context.Name" />
+            <TableColumn @bind-Field="@context.Description" AllowTextWrap="true" />
+            <TableColumn @bind-Field="@context.Type" />
+        </TableColumns>
+    </Table>
+</div>
+
+@code {
+    [Parameter] public IEnumerable<EventItem>? Items { get; set; }
+}

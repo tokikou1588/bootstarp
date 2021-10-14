@@ -1,0 +1,18 @@
+﻿@inherits LayoutComponentBase
+@layout BaseLayout
+
+<section class="section">
+    <div class="sidebar">
+        <Scroll IsForce="false" Height="100%">
+            <NavMenu />
+        </Scroll>
+    </div>
+
+    <div class="main">
+        <div class="content p-3">
+            @Body
+        </div>
+    </div>
+</section>
+
+<footer></footer>

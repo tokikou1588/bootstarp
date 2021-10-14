@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+    <Content Remove="wwwroot\**\*.*" />
+    <Content Include="wwwroot\js\export.min.js" />
+    <None Include="bundleconfig.json" />
+    <None Include="wwwroot\**\*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+  </ItemGroup>
+
+</Project>
