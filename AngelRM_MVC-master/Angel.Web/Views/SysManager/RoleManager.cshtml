@@ -1,0 +1,150 @@
+﻿@using Angel.Model;
+<link href="/Scripts/dist/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+<link href="/Content/JQuery.zTree.v3.1/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+<div class="widget-header widget-header-blue widget-header-flat" style="background-color: transparent; border: 0px; padding-left: 0px; line-height: 70px;">
+        <h4 class="widget-title" style="color: #333333; left: 0px;">角色管理</h4>
+        <div class="widget-toolbar" style="padding: 0px; line-height: 70px;">
+            <div class="form-inline form-group " style="line-height: 70px;">
+
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" id="search-input" placeholder="检索 ..." style="height: 32px; margin-top: 19px; margin-left: 1px" size="40" />
+                    <div id="toggle-result-format" class="input-group-btn">
+
+
+                          <button title="查询" id="btnSearch" type="button" style="" class="btn btn-success  onclickbtn">
+                            <i class="fa fa-search onclickbtni" style=""></i>
+                            </button>
+                         @{
+                          List<Menu> lists= ViewBag.Menulist;
+                          foreach(Menu me in lists){    
+                          if(me.menuo.IndexOf("add") != -1 )
+                          {
+                        <button title="新增" style="width: 40px;height:32px; border-color:  #8fbcd9" class="btn btn-xs btn-white btn-info" id="btnAdd" onclick="showRole(this)" name="add">
+                            <i class="ace-icon fa fa-plus bigger-120 orange " style="-webkit-text-stroke: 0.6px #fff"></i>
+                        </button>
+                          }
+                          if (me.menuo.IndexOf("edit") != -1)
+                          {
+                        <button title="修改" style="width: 40px;height:32px; border-color:  #8fbcd9" class="btn btn-xs btn-white btn-info" id="btnEdit" onclick="showRole(this)" name="edit">
+                            <i class="ace-icon fa fa-pencil bigger-120 orange"></i>
+                        </button>
+                          }
+                          if (me.menuo.IndexOf("remove") != -1)
+                          {
+                        <button title="删除" style="width: 40px;height:32px; border-color:  #8fbcd9" class="btn btn-xs btn-white btn-info" data-toggle="modal" id="btnRemove" onclick="deleteAction()">
+                            <i class="ace-icon  fa fa-trash-o bigger-120 orange "></i>
+                        </button>
+                          }               
+                              
+                         }                        
+                     }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<div class="widget-body" style="border: 1px solid #CCC;">
+        <div class="widget-main" style="padding: 0px;">
+            <table id="table"></table>
+        </div>
+    </div>
+
+<!-- 树状菜单显示 -->
+<div class="modal fade" id="menuTree" tabindex="9999" style="z-index: 99999;" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-tree" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">管理菜单</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body" style="height: 450px; overflow-y: auto;">
+        
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" name="add" id="save_tree">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="roleDialog" tabindex="9999" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-tree" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roleTitle">角色管理</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body" style="height: 460px; overflow-y: auto;">
+                <div class="form-group">
+                    <label for="input1">角色名称</label>
+                    <input id="input1" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="input2">角色备注</label>
+                    <input id="input2" type="text" class="form-control">
+                </div>
+                <div class="form-group" id="input3">
+                    <label for="input3" name="input3">管理菜单</label>
+                     <div id="treeDemo" class=""></div>
+                </div>
+
+                <div class="form-group" id="input4">
+                    <label for="input5" name="input4">角色级别<font color="red">(注:级别越高管理范围越大,修改需谨慎)</font></label>
+                    <input type="text" class="form-control">
+                </div>
+
+
+                        <div class="form-group" style="border-top: 2px solid #eee; padding-top: 6px;">
+                            <label for="input5" class="activec">是否可用: &nbsp;&nbsp;&nbsp;</label>
+
+                            <label>
+                                <input name="isenabled" type="radio" value="Y" class="ace" checked />
+                                <span class="lbl">是 </span>
+                            </label>
+
+
+                            <label>
+                                <input name="isenabled" type="radio" value="N" class="ace" />
+                                <span class="lbl">否</span>
+                            </label>
+
+
+                            <div style="height: 5px;"></div>
+
+                        </div>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" name="add" id="save_role">保存</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/js/com.js"></script>
+<script src="~/Scripts/dist/waves/waves-0.7.5/waves.s.js"></script>
+<script src="/Scripts/dist/bootstrap-table-1.11.1/bootstrap-table.min.js"></script>
+<script src="/Scripts/dist/bootstrap-table-1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/Scripts/dist/jquery-confirm/dist/jquery-confirm.min.js"></script>
+<script src="/Scripts/js/common.js"></script>
+<script src="/Scripts/dist/treeview/bootstrap-treeview.js"></script>
+<script src="~/ViewScripts/sysmanager/rolemanager.js"></script>
+<script>
+    //toggle display format buttons
+    $('#toggle-result-format .btn').tooltip({ container: 'body' }).on('click', function (e) {
+        $(this).siblings().each(function () {
+            $(this).removeClass($(this).attr('data-class')).addClass('btn-grey');
+        });
+        $(this).removeClass('btn-grey').addClass($(this).attr('data-class'));
+    });
+</script>

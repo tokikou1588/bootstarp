@@ -1,0 +1,79 @@
+﻿<link href="~/Scripts/dist/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+<link rel="stylesheet" href="/Content/themes/css/chosen.min.css" />
+<script src="~/Scripts/wizard.min.js"></script>
+<script src="~/Scripts/dist/bootstrap-select/js/bootstrap-select.js"></script>
+<script src="/Content/themes/js/chosen.jquery.min.js"></script>
+<script src="~/ViewScripts/provinceReport/organization.js"></script>
+
+    <div class="widget-header widget-header-blue widget-header-flat" style="background-color: transparent; border: 0px; padding-left: 0px;">
+        <span style="font-size: 20px; color: #8ec31f!important;">组织结构</span>
+    </div>
+
+    <div class="widget-body" style="border:none">
+        <select id="province-sel" style="margin-right: 10px;" class="chosen-select tag-input-style col-sm-2" data-placeholder="请选择省份">
+            <option>安徽</option>
+        </select>
+        @*<button id="plusBtn" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+        <button id="minusBtn" type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span></button>*@
+        <button id="save-btn" type="button" class="btn btn-default" >保存</button>
+    </div>
+
+    <div id="boxList" class="clearfix widget-body" style="border:none">
+        <div id="box1" class="whiteBox">
+            <div style="padding: 10px;">
+                <label>部门名称：</label>
+                <input type="text" name="name" value="市场部" placeholder="部门名称" disabled/>
+                <label style="margin-left: 20px;">部门总数：</label>
+                <input type="number" style="width:90px;" name="allnum" value="" placeholder="部门总数"/>
+                <label style="margin-left: 20px;display:none;">排序号：<span name="sortnum">1</span></label>
+            </div>
+            <div style="margin-left: 72px; padding: 10px;">
+                <textarea rows="3" cols="58" name="departments" value="" placeholder="详细子部门信息，不同部门之间用逗号间隔"></textarea>
+            </div>
+        </div>
+        <div id="box2" class="whiteBox">
+            <div style="padding: 10px;">
+                <label>部门名称：</label>
+                <input type="text" name="name" value="研发部" placeholder="部门名称" disabled/>
+                <label style="margin-left: 20px;">部门总数：</label>
+                <input type="number" style="width:90px;" name="allnum" value="" placeholder="部门总数" />
+                <label style="margin-left: 20px;display:none;">排序号：<span name="sortnum">2</span></label>
+            </div>
+            <div style="margin-left: 72px; padding: 10px;">
+                <textarea rows="3" cols="58" name="departments" value="" placeholder="详细子部门信息，不同部门之间用逗号间隔"></textarea>
+            </div>
+        </div>
+        <div id="box3" class="whiteBox">
+            <div style="padding: 10px;">
+                <label>部门名称：</label>
+                <input type="text" name="name" value="后勤部" placeholder="部门名称" disabled/>
+                <label style="margin-left: 20px;">部门总数：</label>
+                <input type="number" style="width:90px;" name="allnum" value="" placeholder="部门总数" />
+                <label style="margin-left: 20px;display:none;">排序号：<span name="sortnum">3</span></label>
+            </div>
+            <div style="margin-left: 72px; padding: 10px;">
+                <textarea rows="3" cols="58" name="departments" value="" placeholder="详细子部门信息，不同部门之间用逗号间隔"></textarea>
+            </div>
+        </div>
+        <div id="box4" class="whiteBox">
+            <div style="padding: 10px;">
+                <label>部门名称：</label>
+                <input type="text" name="name" value="产品部" placeholder="部门名称" disabled/>
+                <label style="margin-left: 20px;">部门总数：</label>
+                <input type="number" style="width:90px;" name="allnum" value="" placeholder="部门总数" />
+                <label style="margin-left: 20px;display:none;">排序号：<span name="sortnum">4</span></label>
+            </div>
+            <div style="margin-left: 72px; padding: 10px;">
+                <textarea rows="3" cols="58" name="departments" value="" placeholder="详细子部门信息，不同部门之间用逗号间隔"></textarea>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    var $date = $("#date-sel");
+    var $province = $("#province-sel");
+    organization.init($date, $province);
+</script>
+
+
